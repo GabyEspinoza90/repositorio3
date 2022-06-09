@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crear animaciones en canvas con Java Script</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+    <script language="JavaScript">
+      window.onload = function(){
+        var canvas = document.getElementById("canvas");
+        var contexto = canvas.getContext('2d');     
+        // Posición x, y del cuadrado
+        var posX = 0;
+        var posY = 0;      
+        // Aproximadamente 10 frames por segundo, se va a dibujar el cuadrado
+        tiempo =  1000 / 10;      
+        setInterval(function(){      
+          // Eliminar el dibujo del cuadrado anterior
+          contexto.clearRect(posX, posY, canvas.width, canvas.height);
+          // Incrementando en 1 la posición x del cuadrado
+          // Si llega al extremo derecho vuelve a su posición inicial
+          posX = (posX + 1) % (canvas.width - 50);       
+          // Dibujar nuevamente el cuadrado
+          contexto.fillStyle = "#FFBD16";
+          contexto.fillRect(posX, posY, 100, 100);   
+        }, tiempo);       
+      }
+    </script>
+  </body>
+</html>
